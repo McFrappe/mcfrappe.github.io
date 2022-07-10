@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title> Fahad Jamil - Links </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="stylesheet" href="./index.css"/>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+		<script>
+			window.addEventListener('DOMContentLoaded', () => {
+				VANTA.FOG({
+					el: "#vanta",
+					mouseControls: true,
+					touchControls: true,
+					gyroControls: false,
+					minHeight: 200.00,
+					minWidth: 200.00,
+					highlightColor: 0x25CCF7,
+					midtoneColor: 0x6D214F,
+					lowlightColor: 0xfff,
+					baseColor: 0x000000,
+					blurFactor: 0.3,
+					speed: 0.10,
+					zoom: 0.50
+				})
+
+				setTimeout(() => {
+					const body = document.querySelector('body')
+					body.style.opacity = 1
+					body.style.filter = 'blur(0px)'
+				}, 100);
+			})
+		</script>
+	</head>
+	<body>
+		<div id="vanta">
+			<header>
+				<img src="https://avatars.githubusercontent.com/u/17787601?v=4"/>
+				<div class="desc-box">
+					<h2>Welcome to my page!</h2>
+					My name is Fahad and I'm a 24-year-old computer science engineering
+					student at Uppsala University, Sweden. I enjoy cooking, taking long
+					walks, and working out. Furthermore, I am also a <em>tech</em>-nerd
+					that has an interest especially in audio, watches, and computers.
+					<br>
+					<br>
+					On this page, you will find my portfolio as well as my different
+					projects that I've worked on. Feel free to send me a mail or a
+					message on LinkedIn for any queries.
+				</div>
+				<div class="social">
+					<div class="link">
+						<a href="https://github.com/McFrappe">
+							<img src="./images/github.svg" alt="github" width="20"/>
+							GitHub
+						</a>
+					</div>
+					<div class="link">
+						<a href="https://www.linkedin.com/in/fahad-jamil-26b16a163/">
+							<img src="./images/linkedin.svg" alt="linkedin" width="20"/>
+							LinkedIn
+						</a>
+					</div>
+				</div>
+			</header>
+			<main>
+				<div class="menu">
+					<!-- <div id="buttons"> -->
+					<!-- 	<button type="button">Portfolio</button> -->
+					<!-- 	<button type="button">Blog</button> -->
+					<!-- </div> -->
+					<div class="posts">
+						<div class="post">
+							<h2>#1 post</h2>
+							<h5>Title description, Dec 7, 2017</h5>
+							<div class="post_img" style="height:200px;">
+								Image
+							</div>
+							<p>Lorem Ipsum is simply dummy text of the printing and
+								typesetting industry. Lorem Ipsum has been the industry's
+								standard dummy text ever since the 1500s, when an unknown printer
+								took a galley of type and scrambled it to make a type specimen
+								book. It has survived not only five centuries, but also the leap
+								into electronic typesetting, remaining essentially unchanged. It
+								was popularised in the 1960s with the release of Letraset sheets
+								containing Lorem Ipsum passages, and more recently with desktop
+								publishing software like Aldus PageMaker including versions of
+								Lorem Ipsum.
+							</p>
+						</div>
+						<div class="post">
+							<h2>#1 post</h2>
+							<h5>Title description, Dec 7, 2017</h5>
+							<div class="post_img" style="height:200px;">
+								Image
+							</div>
+							<p>Lorem Ipsum is simply dummy text of the printing and
+								typesetting industry. Lorem Ipsum has been the industry's
+								standard dummy text ever since the 1500s, when an unknown printer
+								took a galley of type and scrambled it to make a type specimen
+								book. It has survived not only five centuries, but also the leap
+								into electronic typesetting, remaining essentially unchanged. It
+								was popularised in the 1960s with the release of Letraset sheets
+								containing Lorem Ipsum passages, and more recently with desktop
+								publishing software like Aldus PageMaker including versions of
+								Lorem Ipsum.
+							</p>
+						</div>
+			</main>
+					</div>
+	</body>
+</html>

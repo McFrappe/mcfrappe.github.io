@@ -1,0 +1,117 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+	background: #fffa;
+	color: #fff;
+}
+
+body {
+	opacity: 0;
+	transition: opacity 2s ease-in-out, filter 2s ease-in-out;
+}
+
+#vanta {
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	position: relative;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+
+.link,
+button {
+	font-weight: bold;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 1em;
+	margin: 1em;
+	color: black;
+	background-color: #fffa;
+	border-radius: 1em;
+	border: none;
+	width: 10em;
+	display: inline-block;
+	backdrop-filter: blur(10px) saturate(160%) contrast(180%);
+	-webkit-backdrop-filter: blur(10px) saturate(160%) contrast(180%);
+}
+
+.menu {
+	flex-direction: column;
+	align-items: center;
+	display: flex;
+}
+
+.desc-box {
+	margin: 2em;
+	font-size: 1.5em;
+	font-weight: bold;
+	color: white;
+}
+
+.posts {
+	margin-top: 1em;
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+.posts > .post {
+	padding: 1em;
+	padding-top: 0.5em;
+	margin: 1em;
+	background-color: #000a;
+	color: white;
+	border-radius: 1em;
+	backdrop-filter: blur(10px) saturate(160%) contrast(180%);
+	-webkit-backdrop-filter: blur(10px) saturate(160%) contrast(180%);
+}
+
+.post_img {
+	background-color: #fff;
+	color: #000;
+	padding: 20px;
+}
+
+
+#buttons {
+	flex-direction: row;
+	justify-content: space-around;
+	display: flex;
+}
+
+header {
+	padding: 1em;
+	text-align: center;
+}
+
+header > img {
+	margin-left: auto;
+	margin-right: auto;
+	width: 10em;
+	height: 10em;
+	border-radius: 1em;
+	border: 4px solid #2C3A47;
+	display: block;
+}
+
+/* TODO: move this to header too */
+main {
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	position: relative;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+	justify-content: center;
+	align-items: center;
+	white-space: nowrap;
+	gap: 0.5em;
+	display: flex;
+}
