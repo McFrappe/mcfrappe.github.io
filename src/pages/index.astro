@@ -19,13 +19,13 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
   <section>
     <h1 class="mb-6 title">Hi!</h1>
     <p class="mb-4">
-    I'm a 23-year-old computer science engineering student at Uppsala
-    University, Sweden. I am currently doing my masters in Embedded systems.
-    <br>
-    <br>
-    On this page, you will find my portfolio as well as my different projects
-    that I've worked on. Feel free to send me a mail or a message on LinkedIn
-    for any queries.
+      I'm a 23-year-old computer science engineering student at Uppsala
+      University, Sweden. I am currently doing my masters in Embedded systems.
+      <br />
+      <br />
+      On this page, you will find my portfolio as well as my different projects that
+      I've worked on. Feel free to send me a mail or a message on LinkedIn for any
+      queries.
     </p>
     <SocialList />
   </section>
@@ -33,11 +33,11 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
     <h2 class="mb-4 text-xl title">Projects</h2>
     <ul class="space-y-4 sm:space-y-2">
       {
-      allPostsByDate.map((p) => (
-      <li class="flex flex-wrap items-center gap-x-2 [&_q]:w-full">
-	<BlogPostPreview post={p} as="h2" />
-      </li>
-      ))
+        allPostsByDate.map((p) => (
+          <li class="flex flex-wrap items-center gap-x-2 [&_q]:w-full">
+            <BlogPostPreview post={p} as="h2" />
+          </li>
+        ))
       }
     </ul>
   </section>

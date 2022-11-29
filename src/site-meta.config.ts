@@ -5,6 +5,6 @@ const siteMeta = {
   githubUrl: "https://github.com/mcfrappe/mcfrappe.github.io",
   themeColorLight: "#ffffff",
   themeColorDark: "#000000",
-}
+};
 
 export default siteMeta;
