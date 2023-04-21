@@ -1,4 +1,4 @@
-baseurl = "https://mcfrappe.github.i://mcfrappe.github.io"
+baseurl = "https://mcfrappe.github.io://mcfrappe.github.io"
 languageCode = "en-us"
 # Add it only if you keep the theme in the `themes` directory.
 # Remove it if you use the theme as a remote Hugo Module.
@@ -35,7 +35,7 @@ paginate = 5
   showLastUpdated = true
 
   # set a custom favicon (default is a `themeColor` square)
-  # favicon = "favicon.ico"
+  favicon = "favicon.ico"
 
   # Provide a string as a prefix for the last update date. By default, it looks like this: 2020-xx-xx [Updated: 2020-xx-xx] :: Author
   # updatedDatePrefix = "Updated"
@@ -44,7 +44,7 @@ paginate = 5
   # oneHeadingSize = true # default
 
   # whether to show a page's estimated reading time
-  # readingTime = false # default
+  readingTime = true
 
   # whether to show a table of contents
   # can be overridden in a page's front-matter
