@@ -1,14 +1,18 @@
 :root {
-    --red-color: rgba(255, 94, 87, 1);
-    --red-color0: rgba(255, 94, 87, 0);
-    --red-color02: rgba(255, 94, 87, 0.2);
-    --red-color03: rgba(255, 94, 87, 0.3);
-    --green-color: rgba(11, 232, 129, 1);
-    --green-color0: rgba(11, 232, 129, 0);
-    --green-color02: rgba(11, 232, 129, 0.2);
-    --green-color03: rgba(11, 232, 129, 0.3);
-    --white-color: rgb(246, 246, 246);
-    --dark-color: rgb(40, 40, 40);
+    --red-color:        rgba(255, 94, 87, 1.0);
+    --red-color0:       rgba(255, 94, 87, 0.0);
+    --red-color02:      rgba(255, 94, 87, 0.2);
+    --red-color03:      rgba(255, 94, 87, 0.3);
+
+    --peach-color:      rgba(255, 168, 1, 1.0);
+
+    --green-color:      rgba(11, 232, 129, 1.0);
+    --green-color0:     rgba(11, 232, 129, 0.0);
+    --green-color02:    rgba(11, 232, 129, 0.2);
+    --green-color03:    rgba(11, 232, 129, 0.3);
+
+    --white-color:      rgba(246, 246, 246, 1.0);
+    --dark-color:       rgba(40, 40, 40, 1.0);
 }
 
 html, body {
@@ -49,7 +53,7 @@ body {
     }
 
     a {
-        color: var(--green-color);
+        color: var(--peach-color);
     }
 }
 
@@ -78,9 +82,8 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
 }
 
-
 .gif-container {
-    position: absolute;
+    position: fixed;
     left: 10px;
     bottom: 10px;
 }
