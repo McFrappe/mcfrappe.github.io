@@ -7,6 +7,8 @@
     --green-color0: rgba(11, 232, 129, 0);
     --green-color02: rgba(11, 232, 129, 0.2);
     --green-color03: rgba(11, 232, 129, 0.3);
+    --white-color: rgb(246, 246, 246);
+    --dark-color: rgb(40, 40, 40);
 }
 
 html, body {
@@ -36,7 +38,7 @@ body {
 
 @media (prefers-color-scheme: light) {
     body {
-        background-color: rgb(246, 246, 246);
+        background-color: var(--white-color);
         font-weight: 500;
         color: black;
     }
@@ -53,7 +55,7 @@ body {
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: rgb(40, 40, 40);
+        background-color: var(--dark-color);
         font-weight: 400;
         color: white;
     }
