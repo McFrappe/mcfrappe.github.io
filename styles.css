@@ -18,23 +18,26 @@ html {
     display: table;
     margin: auto;
 }
+
 body {
     font-family: monospace;
+    font-weight: 500;
+    font-size: 12px;
     display: table-cell;
     vertical-align: middle;
 }
 
-.glass {
-    padding: 4vw;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 10px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+@media screen and (max-width: 500px) {
+    html, body {
+        width: 90%;
+        font-size: 14px;
+    }
 }
 
 @media (prefers-color-scheme: light) {
     body {
         background-color: rgb(246, 246, 246);
+        font-weight: 500;
         color: black;
     }
 
@@ -51,6 +54,7 @@ body {
 @media (prefers-color-scheme: dark) {
     body {
         background-color: rgb(40, 40, 40);
+        font-weight: 400;
         color: white;
     }
 
@@ -63,6 +67,15 @@ body {
         color: var(--red-color);
     }
 }
+
+.glass {
+    padding: 4vw;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
 
 .gif-container {
     position: absolute;
@@ -93,3 +106,4 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
