@@ -4,7 +4,8 @@
     --red-color02: rgba(255, 94, 87, 0.2);
     --red-color03: rgba(255, 94, 87, 0.3);
 
-    --peach-color: rgba(255, 168, 1, 1.0);
+    --red-button-color: rgba(221, 60, 67, 1.0);
+    --timeline-red-color: rgb(255, 184, 184);
 
     --green-color: rgba(11, 232, 129, 1.0);
     --green-color0: rgba(11, 232, 129, 0.0);
@@ -15,31 +16,33 @@
     --dark-color: rgba(40, 40, 40, 1.0);
 }
 
-html,
-body {
-    height: 100%;
-    width: 50%;
-}
-
 html {
-    display: table;
-    margin: auto;
+    margin: 0;
 }
 
 body {
     font-family: monospace;
     font-weight: 500;
     font-size: 12px;
-    display: table-cell;
-    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1,
+h2,
+h3 {
+    margin-top: 0;
 }
 
 @media screen and (max-width: 500px) {
 
-    html,
     body {
-        width: 90%;
         font-size: 14px;
+    }
+
+    .main-wrapper {
+        width: 20rem;
     }
 }
 
@@ -51,12 +54,11 @@ body {
     }
 
     .glass {
-        background: linear-gradient(135deg, var(--green-color02), var(--green-color0));
-        border: 1px solid var(--green-color03);
+        background: white;
     }
 
     a {
-        color: var(--peach-color);
+        color: var(--red-button-color);
     }
 }
 
@@ -78,11 +80,16 @@ body {
 }
 
 .glass {
-    padding: 4vw;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 10px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+.post {
+    padding: 2rem;
+    position: relative;
 }
 
 .gif-container {
@@ -96,10 +103,72 @@ body {
     height: auto;
 }
 
+.middle-placer {
+    width: 100%;
+    height: 30vh;
+}
+
 .center-container {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30rem;
+}
+
+.empty-timeline {
+    border-left: 2px dashed var(--timeline-red-color);
+    height: 3rem;
+}
+
+.half-a-border-on-top {
+    border-top: 2px dashed var(--timeline-red-color);
+    position: relative;
+}
+
+.half-a-border-on-top::after {
+    padding: 0;
+    margin: 0;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 10px;
+    background-color: var(--white-color);
+    position: absolute;
+    right: 0;
+    top: -2px;
+}
+
+.timeline {
+    box-sizing: border-box;
+    border-left: 2px dashed var(--timeline-red-color);
+    padding-left: 3rem;
+    padding-top: 3rem;
+    width: 100%;
+}
+
+.timeline-year {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    margin-left: -9.5rem;
+    font-size: large;
+    width: 3rem;
+}
+
+.timeline-year::after {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--red-button-color);
+    position: absolute;
+    border-radius: 50%;
+    right: -2rem;
 }
 
 .fahad-icon {
