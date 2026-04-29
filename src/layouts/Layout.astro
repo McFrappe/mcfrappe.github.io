@@ -1,0 +1,363 @@
+---
+import { existsSync, readdirSync } from 'node:fs';
+import path from 'node:path';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+function firstPublicImageUrl(): string | null {
+  const dir = path.join(process.cwd(), 'public', 'images');
+  if (!existsSync(dir)) return null;
+  const names = readdirSync(dir).filter((f) => /\.(jpe?g|png|webp|gif)$/i.test(f));
+  names.sort();
+  return names.length ? `/images/${names[0]}` : null;
+}
+
+const bgImageUrl = firstPublicImageUrl();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="rgb(241, 241, 244)" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgb(23, 23, 26)" />
+    <title>{title}</title>
+</head>
+
+<body>
+    <!-- Background image (first image file in public/images/) -->
+    <div
+        class="bg-image"
+        aria-hidden="true"
+        style={bgImageUrl ? { '--bg-image': `url('${bgImageUrl}')` } : undefined}
+    ></div>
+
+    <!-- Lava lamp blobs -->
+    <div class="lava-bg" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+        <div class="blob blob-5"></div>
+    </div>
+
+    <slot />
+</body>
+
+</html>
+
+<style is:global>
+:root {
+    --link:          #ffc14d;
+    --link-dim:      #e0982d;
+    --link-hover:    #ffe08a;
+    --bg-light: #f1f1f4;
+    --bg-dark:  #17171a;
+    --glass-radius: 20px;
+    --glass-bg: rgba(30, 41, 59, 0.18);
+    --glass-border: rgba(100, 116, 139, 0.28);
+    --glass-blur: 16px;
+    --glass-shadow-outer: 0 12px 40px rgba(2, 6, 23, 0.3);
+    --glass-inset-tint: rgba(79, 70, 229, 0.07);
+    --glass-inset-highlight: rgba(255, 255, 255, 0.1);
+}
+
+html {
+    margin: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.55;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+    line-height: 1.25;
+}
+
+h2 {
+    font-size: 1.65rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+h4 {
+    font-size: 1.1rem;
+    margin: 0.35rem 0 0;
+}
+
+/* ── Background image ──────────────────────────────────────── */
+.bg-image {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background: var(--bg-image, none) center/cover no-repeat;
+    pointer-events: none;
+    opacity: 1;
+}
+
+/* ── Lava lamp blobs ───────────────────────────────────────── */
+.lava-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+    filter: blur(80px);
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+}
+
+.blob-1 {
+    width: 45vmax;
+    height: 45vmax;
+    background: radial-gradient(circle, rgba(255, 60, 50, 0.8) 0%, rgba(255, 120, 40, 0.4) 50%, transparent 70%);
+    top: -10%;
+    left: -10%;
+    animation: drift1 18s ease-in-out infinite alternate;
+}
+
+.blob-2 {
+    width: 50vmax;
+    height: 50vmax;
+    background: radial-gradient(circle, rgba(30, 80, 255, 0.75) 0%, rgba(30, 120, 255, 0.3) 50%, transparent 70%);
+    bottom: -15%;
+    right: -10%;
+    animation: drift2 22s ease-in-out infinite alternate;
+}
+
+.blob-3 {
+    width: 35vmax;
+    height: 35vmax;
+    background: radial-gradient(circle, rgba(160, 40, 220, 0.7) 0%, rgba(120, 30, 200, 0.3) 50%, transparent 70%);
+    top: 40%;
+    right: 20%;
+    animation: drift3 20s ease-in-out infinite alternate;
+}
+
+.blob-4 {
+    width: 30vmax;
+    height: 30vmax;
+    background: radial-gradient(circle, rgba(255, 140, 50, 0.65) 0%, rgba(255, 80, 30, 0.25) 50%, transparent 70%);
+    bottom: 10%;
+    left: 15%;
+    animation: drift4 25s ease-in-out infinite alternate;
+}
+
+.blob-5 {
+    width: 25vmax;
+    height: 25vmax;
+    background: radial-gradient(circle, rgba(50, 180, 255, 0.5) 0%, rgba(30, 100, 220, 0.2) 50%, transparent 70%);
+    top: 10%;
+    right: -5%;
+    animation: drift5 16s ease-in-out infinite alternate;
+}
+
+@keyframes drift1 {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(15vw, 20vh) scale(1.1); }
+    100% { transform: translate(5vw, 35vh) scale(0.95); }
+}
+
+@keyframes drift2 {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(-20vw, -15vh) scale(1.15); }
+    100% { transform: translate(-10vw, -30vh) scale(0.9); }
+}
+
+@keyframes drift3 {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(-15vw, 10vh) scale(1.05); }
+    100% { transform: translate(10vw, -15vh) scale(1.1); }
+}
+
+@keyframes drift4 {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(20vw, -10vh) scale(0.9); }
+    100% { transform: translate(-5vw, -25vh) scale(1.1); }
+}
+
+@keyframes drift5 {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(-10vw, 15vh) scale(1.15); }
+    100% { transform: translate(-20vw, 5vh) scale(0.95); }
+}
+
+/* ── Light mode ─────────────────────────────────────────────── */
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: var(--bg-light);
+        color: #fff;
+    }
+    .bg-image {
+        opacity: 1;
+    }
+    .lava-bg {
+        opacity: 0;
+    }
+    .glass {
+        --glass-bg: rgba(255, 255, 255, 0.2);
+        --glass-border: rgba(100, 116, 139, 0.32);
+        --glass-shadow-outer: 0 12px 36px rgba(2, 6, 23, 0.14);
+        --glass-inset-tint: rgba(255, 190, 100, 0.07);
+        --glass-inset-highlight: rgba(255, 255, 255, 0.22);
+    }
+    a {
+        color: var(--link);
+        transition: color 0.15s ease;
+    }
+    a:hover {
+        color: var(--link-hover);
+    }
+}
+
+/* ── Dark mode ──────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--bg-dark);
+        color: #fff;
+    }
+    .bg-image {
+        opacity: 1;
+    }
+    .lava-bg {
+        opacity: 0;
+    }
+    .glass {
+        --glass-bg: rgba(15, 23, 42, 0.28);
+        --glass-border: rgba(100, 116, 139, 0.22);
+        --glass-shadow-outer: 0 12px 40px rgba(0, 0, 0, 0.45);
+        --glass-inset-tint: rgba(79, 70, 229, 0.06);
+        --glass-inset-highlight: rgba(255, 255, 255, 0.08);
+    }
+    a {
+        color: var(--link);
+        transition: color 0.15s ease;
+    }
+    a:hover {
+        color: var(--link-hover);
+    }
+}
+
+/* ── Glass cards (CSS glassmorphism only — no SVG displacement) ─ */
+.glass {
+    position: relative;
+    width: 100%;
+    border-radius: var(--glass-radius);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow-outer),
+        inset 0 0 120px var(--glass-inset-tint),
+        inset 0 0 4px 2px var(--glass-inset-highlight);
+    overflow: hidden;
+}
+
+.post {
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* ── Layout ─────────────────────────────────────────────────── */
+.layout {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 3rem 1rem;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 32rem;
+    max-width: 100%;
+}
+
+.main-wrapper.padded {
+    padding: 3rem 1rem;
+}
+
+.main-wrapper--wide {
+    width: min(56rem, 100%);
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ── Projects section ───────────────────────────────────────── */
+.section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 2rem;
+}
+
+.section-title {
+    position: relative;
+    z-index: 1;
+    padding-left: 0.5rem;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+    font-size: 1.65rem;
+}
+
+.section-intro {
+    margin: -0.75rem 0 0;
+    padding-left: 0.5rem;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+    opacity: 0.92;
+}
+
+.project-date {
+    font-size: 0.95rem;
+    opacity: 0.6;
+    margin: 0;
+}
+
+/* ── Mobile ─────────────────────────────────────────────────── */
+@media screen and (max-width: 600px) {
+    .main-wrapper {
+        width: 100%;
+    }
+
+    .layout {
+        padding: 2rem 1rem;
+    }
+}
+</style>
